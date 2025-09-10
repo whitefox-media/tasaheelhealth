@@ -367,49 +367,53 @@ button{font:inherit}
 .about-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem; /* reduce gap between image & text */
-  align-items: start; /* align items to top instead of center */
+  gap: 1rem; /* reduced gap between image & text */
+  align-items: start; /* align image and text to top */
   width: 90%;
-  max-width: 1100px;
-  margin: 1rem auto; /* reduce top/bottom margin */
-  padding: 0.5rem 0; /* optional: reduce internal spacing */
+  max-width: 1180px;
+  margin: 0.5rem auto 0; /* reduced top/bottom margin */
+  padding: 0.5rem 0; /* optional internal spacing */
+}
+
+.about-text {
+  padding-right: 1rem; /* balanced spacing */
+}
+
+.about-text h2,
+.about-text span,
+.about-text p {
+  margin-bottom: 0.5rem; /* tighter spacing */
 }
 
 .about-text p {
-  margin-top: 0.5rem; /* reduce space above paragraph */
+  margin-top: 0.5rem;
   line-height: 1.5;
 }
 
 .about-image img {
   width: 100%;
-  max-width: 450px; /* control image size */
-  border-radius: 0; /* remove border */
-  box-shadow: none; /* remove shadow */
+  max-width: 480px;
+  border-radius: 0;
+  box-shadow: none;
   transform: scaleX(-1); /* flip horizontally */
   margin: 0 auto; /* center on smaller screens */
+   margin-top: -100px;
 }
-
-.about-text {
-  padding-right: 1rem; /* smaller padding for balance */
-}
-
-
 
 /* -------- Mission & Vision Grid -------- */
-/* ===== About Grid ===== */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem; /* reduced gap */
+  gap: 2rem;
   justify-content: center;
   width: 94%;
-  max-width: 1100px;
-  margin: 0 auto 4rem auto; /* removed top margin to reduce white space */
+  max-width: 1200px;
+  margin: 0 auto 4rem auto; /* top margin removed */
 }
 
 .about-grid div {
   background: #ffffff;
-  padding: 1.3rem; /* slightly smaller padding */
+  padding: 1.3rem;
   border-radius: 12px;
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -452,38 +456,23 @@ button{font:inherit}
   margin-top: 2rem;
 }
 
-/* ===== About Container (Image + Text) ===== */
-.about-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 2rem;
-  width: 94%;
-  max-width: 1100px;
-  margin: 0 auto;
-  margin-bottom: 0; /* removed bottom margin to reduce white space */
-}
-
-.about-text h2,
-.about-text span,
-.about-text p {
-  margin-bottom: 0.5rem; /* tighten spacing inside about text */
-}
-
-/* ===== Responsive ===== */
+/* -------- Responsive -------- */
 @media (max-width: 992px) {
   .about-container {
     grid-template-columns: 1fr; /* stack image & text */
     text-align: center;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
   }
+  /* .about-image img {
+    margin-top: 0px;
+} */
 
   .about-text {
     padding-right: 0;
   }
 
   .about-image img {
-    max-width: 300px; /* smaller on tablet */
+    max-width: 300px;
   }
 }
 
@@ -492,7 +481,7 @@ button{font:inherit}
     grid-template-columns: 1fr; /* stack mission/vision */
     gap: 1.5rem;
     width: 90%;
-    margin-top: 2rem;
+    margin-top: -2rem;
   }
 
   .about-grid div {
@@ -500,10 +489,9 @@ button{font:inherit}
   }
 
   .about-image img {
-    max-width: 250px; /* smaller on mobile */
+    max-width: 250px;
   }
 }
-
 
 
 
