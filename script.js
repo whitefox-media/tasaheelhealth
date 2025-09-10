@@ -47,6 +47,10 @@ const onScrollSpy = () => {
 window.addEventListener('scroll', onScrollSpy);
 onScrollSpy();
 
+
+
+
+
 // ------------------ Hero Background Carousel ------------------
 const heroBg = $('.hero-background');
 const heroImages = [
