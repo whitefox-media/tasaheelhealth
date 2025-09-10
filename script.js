@@ -47,10 +47,6 @@ const onScrollSpy = () => {
 window.addEventListener('scroll', onScrollSpy);
 onScrollSpy();
 
-
-
-
-
 // ------------------ Hero Background Carousel ------------------
 const heroBg = $('.hero-background');
 const heroImages = [
@@ -103,7 +99,7 @@ $$('.faq-question').forEach(btn => {
     const isOpen = parent.classList.contains('open');
 
     // Close all
-    $$(' .faq-item').forEach(i => {
+    $$('.faq-item').forEach(i => {
       i.classList.remove('open');
       i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
     });
