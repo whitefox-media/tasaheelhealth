@@ -44,6 +44,16 @@ button{font:inherit}
 
 /* ------------------ HEADER ------------------ */
 /* ---------------- HEADER ---------------- */
+:root {
+  --brand: #4CAF87;
+  --brand-700: #43a073;
+  --ink: #0a3d62;
+  --line: #e0e0e0;
+  --shadow-1: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-2: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* -------- Header -------- */
 .header {
   position: sticky;
   top: 0;
@@ -61,7 +71,7 @@ button{font:inherit}
   padding: 10px 0;
 }
 
-/* ---------------- LOGO ---------------- */
+/* -------- Logo -------- */
 .logo-area {
   display: flex;
   align-items: center;
@@ -86,56 +96,45 @@ button{font:inherit}
   margin-top: -2px;
 }
 
-/* ---------------- NAVIGATION ---------------- */
-/* ---------------- Header Navigation ---------------- */
+/* -------- Navigation -------- */
 .nav {
   position: relative;
 }
 
-/* Mobile nav toggle button */
+/* Hamburger toggle */
 .nav-toggle {
-  display: none;                /* hidden by default */
+  display: none; /* hidden by default, only show on mobile */
   flex-direction: column;
-  gap: 5px;
-  background: transparent;
-  border: 2px solid #4CAF87;
-  padding: 8px;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: none;
+  border: 2px solid var(--brand);
   border-radius: 6px;
+  padding: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Hamburger bars */
 .nav-toggle-bar {
-  width: 24px;
-  height: 2px;
-  background: #4CAF87;          /* green bars */
+  height: 3px;
+  width: 100%;
+  background: var(--ink);
   transition: all 0.3s ease;
 }
 
-/* Hover + open state */
-.nav-toggle:hover,
-.nav-toggle[aria-expanded="true"] {
-  background: #4CAF87;
-}
-
-.nav-toggle:hover .nav-toggle-bar,
-.nav-toggle[aria-expanded="true"] .nav-toggle-bar {
-  background: #fff;             /* bars turn white */
-}
-
-/* Turn into "X" when open */
-.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+/* Animate into X when open */
+.nav-toggle.open .nav-toggle-bar:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
-  opacity: 0; /* hide middle bar */
+.nav-toggle.open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
 }
-.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+.nav-toggle.open .nav-toggle-bar:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Navigation links */
+/* Nav links desktop */
 .nav-links {
   display: flex;
   gap: 26px;
@@ -160,73 +159,36 @@ button{font:inherit}
   transition: width 0.25s;
 }
 
-/* Show only on mobile */
-@media (max-width: 860px) {
-  .nav-toggle {
-    display: flex;
-  }
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
 }
 
-.
-/* ---------------- BUTTONS ---------------- */
-.btn {
+/* -------- Buttons -------- */
+.btn-appointment {
   background: var(--brand);
   color: #fff;
-  border: 0;
-  border-radius: 999px;
-  padding: 12px 22px;
-  font-weight: 700;
-  box-shadow: 0 4px 12px rgba(76, 175, 135, 0.25);
-  transition: transform 0.2s, background 0.2s;
-}
-
-.btn:hover {
-  background: var(--brand-700);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-}
-
-/* Appointment Button */
-.btn-appointment {
-  background: #4CAF87;
-  color: #fff;
-  border: 2px solid #4CAF87;
+  border: 2px solid var(--brand);
   padding: 10px 22px;
   border-radius: 999px;
   font-weight: 700;
-  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(76, 175, 135, 0.25);
+  box-shadow: 0 4px 12px rgba(76,175,135,0.25);
   transition: all 0.3s ease;
 }
 
-.btn-appointment i {
-  color: #fff;
-}
-
 .btn-appointment:hover {
-  background: #43a073;
-  border-color: #43a073;
+  background: var(--brand-700);
+  border-color: var(--brand-700);
   transform: translateY(-1px);
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-@media (max-width: 980px) {
-  .btn-appointment {
-    display: none;
-  }
-}
-
+/* -------- Responsive -------- */
 @media (max-width: 860px) {
   .nav-toggle {
-    display: flex;
+    display: flex; /* show hamburger on mobile */
   }
 
   .nav-links {
@@ -251,7 +213,12 @@ button{font:inherit}
     opacity: 1;
     pointer-events: auto;
   }
+
+  .btn-appointment {
+    display: none;
+  }
 }
+
 
 
 
@@ -377,6 +344,8 @@ button{font:inherit}
 /* ------------------ ABOUT ------------------ */
 /* About Carousel */
 
+/* -------- Section Titles -------- */
+/* -------- Section Titles -------- */
 .section-title {
   font-family: 'Nunito', sans-serif;
   font-size: 2rem;
@@ -390,39 +359,59 @@ button{font:inherit}
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
   font-size: 1.1rem;
-  color: #38ada9;
+  color: #4CAF87; /* unified brand color */
   margin-bottom: 1rem;
 }
 
+/* -------- About Section -------- */
 .about-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: center;
-  width: 91%;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 1rem; /* reduce gap between image & text */
+  align-items: start; /* align items to top instead of center */
+  width: 90%;
+  max-width: 1100px;
+  margin: 1rem auto; /* reduce top/bottom margin */
+  padding: 0.5rem 0; /* optional: reduce internal spacing */
+}
+
+.about-text p {
+  margin-top: 0.5rem; /* reduce space above paragraph */
+  line-height: 1.5;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 450px; /* control image size */
+  border-radius: 0; /* remove border */
+  box-shadow: none; /* remove shadow */
+  transform: scaleX(-1); /* flip horizontally */
+  margin: 0 auto; /* center on smaller screens */
 }
 
 .about-text {
-  padding-right: 2rem; /* spacing on desktop */
+  padding-right: 1rem; /* smaller padding for balance */
 }
 
+
+
+/* -------- Mission & Vision Grid -------- */
+/* ===== About Grid ===== */
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem; /* reduced gap */
   justify-content: center;
-  width: 91%;
-  max-width: 1200px;
-  margin: 4rem auto;
+  width: 94%;
+  max-width: 1100px;
+  margin: 0 auto 4rem auto; /* removed top margin to reduce white space */
 }
 
 .about-grid div {
   background: #ffffff;
-  padding: 1.5rem;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.3rem; /* slightly smaller padding */
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.06);
   position: relative;
@@ -432,10 +421,6 @@ button{font:inherit}
 .about-grid div:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
-}
-
-.about-track {
-  transform: scaleX(-1); /* flip image horizontally */
 }
 
 .about-grid h3 {
@@ -462,15 +447,43 @@ button{font:inherit}
   font-size: 1rem;
 }
 
-/* -------- Responsive -------- */
+/* Extra spacing under the grid */
+.about-grid + * {
+  margin-top: 2rem;
+}
+
+/* ===== About Container (Image + Text) ===== */
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  width: 94%;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-bottom: 0; /* removed bottom margin to reduce white space */
+}
+
+.about-text h2,
+.about-text span,
+.about-text p {
+  margin-bottom: 0.5rem; /* tighten spacing inside about text */
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 992px) {
   .about-container {
     grid-template-columns: 1fr; /* stack image & text */
     text-align: center;
+    margin: 1.5rem auto;
   }
 
   .about-text {
     padding-right: 0;
+  }
+
+  .about-image img {
+    max-width: 300px; /* smaller on tablet */
   }
 }
 
@@ -480,6 +493,14 @@ button{font:inherit}
     gap: 1.5rem;
     width: 90%;
     margin-top: 2rem;
+  }
+
+  .about-grid div {
+    padding: 1rem;
+  }
+
+  .about-image img {
+    max-width: 250px; /* smaller on mobile */
   }
 }
 

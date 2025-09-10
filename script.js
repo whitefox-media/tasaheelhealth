@@ -7,22 +7,14 @@ const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 $('#year').textContent = new Date().getFullYear();
 
 // ------------------ Mobile Navigation ------------------
-const navToggle = $('.nav-toggle');
-const navLinks = $('.nav-links');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
 
-if (navToggle) {
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(open));
-  });
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open');
+});
 
-  navLinks.addEventListener('click', (e) => {
-    if (e.target.matches('a') && navLinks.classList.contains('open')) {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
 
 // ------------------ Scroll Spy ------------------
 const sections = $$('section[id]');
